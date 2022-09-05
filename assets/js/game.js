@@ -1,16 +1,37 @@
+var playerName = window.prompt('What is your robots name?');
+var playerHealth = 100;
+var playerAttack = 10;
 
- var playerName = window.prompt('What is your robots name?');
-console.log(playerName);
+console.log(playerName, playerAttack, playerHealth);
 
-console.log('a string is just a way to say txt thats inside the quotes');
-//this one does math
-console.log(10 + 10);
-//this one combines data from a var with a string 
-console.log('My Robots name is ' + playerName);
+var enemyName = 'Roborto';
+var enemyHealth = 50;
+var enemyAttack = 12;
 
-// fight function
+//fight function
 
-function fight() {
-    window.alert('The fight has begun!');
-}
-//fight()
+var fight = function() {
+    window.alert('Welcome to Robot Gladiators!');
+
+    //subtract value of playerAttack from value of enemyHealth and use result to update overall enemyHealth
+
+    enemyHealth = enemyHealth - playerAttack;
+
+    //log result to console to know it worked 
+
+    console.log(
+        playerName + ' attacked ' + enemyName + '. ' + enemyName + ' now has ' + enemyHealth + ' health remaining. '
+    ); 
+
+    //subtract value of enemyAttack from value of playerHealth and use result to update overall playerHealth
+
+    playerHealth = playerHealth - enemyAttack;
+
+    //log result to console to know it worked
+
+    console.log(
+        enemyName + ' attacked ' + playerName + '. ' + playerName + ' now has ' + playerHealth + ' health remaining. '
+    )
+};
+
+fight();
