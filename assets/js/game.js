@@ -23,6 +23,15 @@ var fight = function() {
         playerName + ' attacked ' + enemyName + '. ' + enemyName + ' now has ' + enemyHealth + ' health remaining. '
     ); 
 
+    //check enemy's health
+
+    if (enemyHealth <= 0)  {
+        window.alert(enemyName + ' has died! ');
+    }
+    else {
+        window.alert(enemyName + ' still has ' + enemyHealth + ' health left. ');
+    }
+
     //subtract value of enemyAttack from value of playerHealth and use result to update overall playerHealth
 
     playerHealth = playerHealth - enemyAttack;
@@ -31,7 +40,16 @@ var fight = function() {
 
     console.log(
         enemyName + ' attacked ' + playerName + '. ' + playerName + ' now has ' + playerHealth + ' health remaining. '
-    )
+    );
+
+    //check players health
+
+    if (playerHealth <= 0) {
+        window.alert(playerName + ' has died!');
+    }
+    else {
+        window.alert(playerName + ' still has ' + playerHealth + ' health left.')
+    }
 };
 
 fight();
