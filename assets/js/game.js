@@ -5,9 +5,25 @@ var playerMoney = 10;
 
 console.log(playerName, playerAttack, playerHealth);
 
-var enemyName = 'Roborto';
+var enemyNames = ['Roborto', 'Amy Android', 'Vibrator'];
 var enemyHealth = 50;
 var enemyAttack = 12;
+
+//fight all enemy robots
+for (var i = 0; i < enemyNames.length; i++) {
+    console.log(enemyNames[i]);
+    console.log(i);
+    console.log(enemyNames[i] + ' is at ' + i + ' index');
+}
+
+//game states=
+
+//'win' - player robot has defeated all enemy robots
+//      *fight all enemy-robots
+//      *defeat each enemy-robot
+//'lose' - player robots health is at zero or less
+
+
 
 //fight function
 
@@ -26,16 +42,16 @@ var fight = function() {
         //log result to console to know it worked 
 
         console.log(
-            playerName + ' attacked ' + enemyName + '. ' + enemyName + ' now has ' + enemyHealth + ' health remaining. '
+            playerName + ' attacked ' + enemyNames + '. ' + enemyNames + ' now has ' + enemyHealth + ' health remaining. '
         ); 
 
         //check enemy's health
 
         if (enemyHealth <= 0)  {
-            window.alert(enemyName + ' has died! ');
+            window.alert(enemyNames + ' has died! ');
         }
         else {
-            window.alert(enemyName + ' still has ' + enemyHealth + ' health left. ');
+            window.alert(enemyNames + ' still has ' + enemyHealth + ' health left. ');
         }
 
         //subtract value of enemyAttack from value of playerHealth and use result to update overall playerHealth
@@ -45,7 +61,7 @@ var fight = function() {
         //log result to console to know it worked
 
         console.log(
-            enemyName + ' attacked ' + playerName + '. ' + playerName + ' now has ' + playerHealth + ' health remaining. '
+            enemyNames + ' attacked ' + playerName + '. ' + playerName + ' now has ' + playerHealth + ' health remaining. '
         );
 
    // check player's health
@@ -75,6 +91,7 @@ var fight = function() {
     }
 } 
 
-
 };    
-fight();
+//fight();
+
+//3.2.1
