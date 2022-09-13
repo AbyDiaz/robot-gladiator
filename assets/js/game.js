@@ -3,18 +3,14 @@ var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney = 10;
 
-console.log(playerName, playerAttack, playerHealth);
-
 var enemyNames = ['Roborto', 'Amy Android', 'Vibrator'];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
 //fight all enemy robots
-for (var i = 0; i < enemyNames.length; i++) {
-    console.log(enemyNames[i]);
-    console.log(i);
-    console.log(enemyNames[i] + ' is at ' + i + ' index');
-}
+for(var i = 0; i < enemyNames.length; i++) {
+
+  }
 
 //game states=
 
@@ -24,10 +20,9 @@ for (var i = 0; i < enemyNames.length; i++) {
 //'lose' - player robots health is at zero or less
 
 
-
 //fight function
 
-var fight = function() {
+var fight = function(enemyNames) {
     window.alert('Welcome to Robot Gladiators!');
 
     var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
@@ -92,6 +87,8 @@ var fight = function() {
 } 
 
 };    
-//fight();
 
-//3.2.1
+for(var i = 0; i < enemyNames.length; i++) {
+    fight(enemyNames[i]);
+}
+
