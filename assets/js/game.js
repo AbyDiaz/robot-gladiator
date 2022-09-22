@@ -106,3 +106,28 @@ var fight = function(enemyName) {
     };
       //start game when page loads
     startGame();
+    endGame();
+
+//function to end game 
+var endGame = function() {
+
+    //if player is alive they win
+    if (playerHealth > 0){
+        window.alert('Great job, you survived the game! You have a score of ' + playerMoney + '.');
+    }
+    else {
+        window.alert('Youve lost your robot in battle.');
+    }
+
+    //ask player if theyd like to play again
+    var playAgainConfirm = window.confirm('Would you like to play again?');
+      if (playAgainConfirm) {
+        //restart game
+        startGame();
+      }
+      else {
+        window.alert('Thank you for playing Robot Gladiators! Come back soon!');
+      }
+};
+
+//game is stuck in loop, need to add endgame at the end of start game function
