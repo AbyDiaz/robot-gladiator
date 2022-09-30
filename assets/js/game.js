@@ -126,6 +126,7 @@ var endGame = function () {
         window.alert('Thankyou for playing Robot Gladiators! Come Back Soon!');
     }
 };
+// remeber scope of a function and how placement affects it 
 endGame();
 // start game when page loads
 startGame();
