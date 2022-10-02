@@ -96,6 +96,17 @@ var startGame = function () {
             // pass the pickedEnemyName variable value into the fight function, where it will assume the value of the enemyName parameter
             fight(pickedEnemyName);
 
+            // if not at last enemy in the array 
+            if (playerHealth  > 0 && i < enemyNames.length - 1) {
+                // ask if player wants to use store before next round 
+                var storeConfirm = window.confirm('The fight is over, visit the store before the next round?');
+
+                // if yes, take them to store function
+                if (storeConfirm){
+                    shop();
+                }
+            }
+
          // if player isnt alive, stop the game 
         } else {
             window.alert('You have lost your robot in battle! Game Over!');
@@ -107,6 +118,7 @@ var startGame = function () {
     debugger;
     endGame();
 };
+
 var endGame = function () {
     // if player is alive they win
     if (playerHealth > 0) {
@@ -126,30 +138,60 @@ var endGame = function () {
         window.alert('Thankyou for playing Robot Gladiators! Come Back Soon!');
     }
 };
+// shop function. https://www.digitalocean.com/community/tutorials/understanding-hoisting-in-javascript
+// look at link to understnad hoisting of functions 
+var shop = function() {
+    // ask player what theyd like to do 
+    var shopOptionPrompt = window.prompt(
+        'Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: REFILL, UPGRADE, or LEAVE to make a choice.'
+    );
+
+    // using switch to carry out function
+    switch (shopOptionPrompt) {
+
+        case 'refill':
+        case 'REFILL':
+            if (playerMoney >= 7) {
+            window.alert('Refilling players health by 20 for $7.');
+            //increase health and decrease money 
+            playerHealth = playerHealth + 20;
+            playerMoney = playerMoney - 7;
+            }
+            else {
+                window.alert('You dont have enough money!');
+            }
+            break;
+
+        case 'upgrade':
+        case 'UPGRADE':
+            if (playerMoney >= 7) {
+            window.alert('Upgrading players attack by 6 for $7.');
+            //increase attack and decrease money 
+            playerAttack = playerAttack + 6;
+            playerMoney = playerMoney - 7;
+            }
+            else {
+                window.alert('You dont have enough money');
+            }
+            break;
+
+        case 'leave':
+        case 'LEAVE':
+            window.alert('Leaving the store.');
+            //do nothing, function ends
+            break;
+
+        default:
+            window.alert('You did not pick a valid opyion. Try again.');
+            // call shop again to force player  to pick a valid option 
+            shop();
+            break;
+
+    }
+};
+
 // remeber scope of a function and how placement affects it 
 endGame();
-// start game when page loads
+
+// start game when page loads*/
 startGame();
-
-
-// function to end the game
-/*var endGame = function () {
-    // if player is alive they win
-    if (playerHealth > 0) {
-        window.alert(
-        'Great Job, you survived the game! You have a score of' + playerMoney + ' .');
-    } else {
-        window.alert('You have lost your robot in battle.');
-    }
-
-    // ask player if they want to play again
-    var playAgainConfirm = window.confirm('Would you like to play again?');
-
-    if(playAgainConfirm) {
-        // restart game
-        startGame();
-    } else {
-        window.alert('Thankyou for playing Robot Gladiators! Come Back Soon!');
-    }
-};*/
-//endGame();
