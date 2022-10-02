@@ -98,7 +98,13 @@ var startGame = function () {
 
             // if not at last enemy in the array 
             if (playerHealth  > 0 && i < enemyNames.length - 1) {
-                shop();
+                // ask if player wants to use store before next round 
+                var storeConfirm = window.confirm('The fight is over, visit the store before the next round?');
+
+                // if yes, take them to store function
+                if (storeConfirm){
+                    shop();
+                }
             }
 
          // if player isnt alive, stop the game 
@@ -132,16 +138,56 @@ var endGame = function () {
         window.alert('Thankyou for playing Robot Gladiators! Come Back Soon!');
     }
 };
-// shop function
-/*var shop = function() {
-    console.log('Entered the Shop');
-};*/
+// shop function. https://www.digitalocean.com/community/tutorials/understanding-hoisting-in-javascript
+// look at link to understnad hoisting of functions 
+var shop = function() {
+    // ask player what theyd like to do 
+    var shopOptionPrompt = window.prompt(
+        'Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: REFILL, UPGRADE, or LEAVE to make a choice.'
+    );
+    // using switch to carry out function
+    switch (shopOptionPrompt) {
+
+        case 'refill':
+            if (playerMoney >= 7) {
+            window.alert('Refilling players health by 20 for $7.');
+            //increase health and decrease money 
+            playerHealth = playerHealth + 20;
+            playerMoney = playerMoney - 7;
+            }
+            else {
+                window.alert('You dont have enough money!');
+            }
+            break;
+
+        case 'upgrade':
+            if (playerMoney >= 7) {
+            window.alert('Upgrading players attack by 6 for $7.');
+            //increase attack and decrease money 
+            playerAttack = playerAttack + 6;
+            playerMoney = playerMoney - 7;
+            }
+            else {
+                window.alert('You dont have enough money');
+            }
+            break;
+
+        case 'leave':
+            window.alert('Leaving the store.');
+            //do nothing, function ends
+            break;
+            
+        default:
+            window.alert('You did not pick a valid opyion. Try again.');
+            // call shop again to force player  to pick a valid option 
+            shop();
+            break;
+
+    }
+};
 
 // remeber scope of a function and how placement affects it 
 endGame();
-// shop function
-var shop = function() {
-    console.log('Entered the Shop');
-};
-// start game when page loads
+
+// start game when page loads*/
 startGame();
