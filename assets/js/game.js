@@ -1,5 +1,5 @@
 /* GAME FUNCTIONS */
-
+debugger;
 // function to generate a random numeric value
 var randomNumber = function(min, max) {
   var value = Math.floor(Math.random() * (max - min + 1) + min);
@@ -12,7 +12,6 @@ var fightOrSkip = function () {
   // ask player if theyd like to fight or skip using the fight or skip function
   var promptFight = window.prompt ('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
 
-  //promptFight = promptFight. toLowerCase();
 
   if (promptFight === '' || promptFight === null) {
     window.alert('You silly goose , you need to provide a real goddamn answer! Try tf again :)');
@@ -31,7 +30,7 @@ var fightOrSkip = function () {
       window.alert(playerInfo.name + ' has decided to skip this fight. Toodles!');
       //subtract money from player money for skipping 
       playerInfo.playerMoney = playerInfo.money - 10;
-      shop();
+      
 
       //return true if player wants to leave 
       return true;
@@ -101,6 +100,7 @@ var startGame = function() {
   for (var i = 0; i < enemyInfo.length; i++) {
     // if player is still alive, keep fight next enemy
     if (playerInfo.health > 0) {
+      
       // let player know what round they are in, remember that arrays start at 0 so it needs to have 1 added to it
       window.alert('Welcome to Robot Gladiators! Round ' + (i + 1));  
 
@@ -117,7 +117,7 @@ var startGame = function() {
       if (playerInfo.health > 0 && i < enemyInfo.length - 1) {
         // ask if player wants to use the store before next round
         var storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
-      
+       
         // if yes, take them to the store() function
         if (storeConfirm) {
           shop();
@@ -160,21 +160,19 @@ var endGame = function() {
 var shop = function() {
   // ask player what they'd like to do
   var shopOptionPrompt = window.prompt(
-    'Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one "REFILL", "UPGRADE", or "LEAVE" to make a choice.'
+    'Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter 1 for "REFILL", 2 for "UPGRADE", or 3 for "LEAVE" to make a choice.'
   );
-
+    shopOptionPrompt = parseInt(shopOptionPrompt);
   // use switch case to carry out action
+debugger;
   switch (shopOptionPrompt) {
-    case 'REFILL':
-    case 'refill':
+    case 1:
       playerInfo.refillHealth();
       break;
-    case 'UPGRADE':
-    case 'upgrade':
+    case 2:
       playerInfo.upgradeAttack();
       break;
-    case 'LEAVE':
-    case 'leave':
+    case 3:
       window.alert('Leaving the store.');
 
       // do nothing, so function will end
@@ -272,3 +270,5 @@ console.log(enemyInfo[0]['attack']);
 
 /* RUN GAME */
 startGame();
+
+ 
